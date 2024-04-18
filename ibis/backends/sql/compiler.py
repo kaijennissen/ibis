@@ -816,9 +816,6 @@ class SQLGlotCompiler(abc.ABC):
     def visit_ExtractDay(self, op, *, arg):
         return self.f.extract(self.v.day, arg)
 
-    def visit_ExtractDayOfWeek(self, op, *, arg):
-        return self.f.extract(self.v.dayofweek, arg)
-
     def visit_ExtractDayOfYear(self, op, *, arg):
         return self.f.extract(self.v.dayofyear, arg)
 
@@ -864,12 +861,25 @@ class SQLGlotCompiler(abc.ABC):
     def visit_DayOfWeekIndex(self, op, *, arg):
         return (self.f.dayofweek(arg) + 6) % 7
 
+    def visit_IsoDayOfWeekIndex(self, op, *, arg):
+        return self.f.dayofweek(arg)
+     
+
     def visit_DayOfWeekName(self, op, *, arg):
         # day of week number is 0-indexed
         # Sunday == 0
         # Saturday == 6
         return sge.Case(
             this=(self.f.dayofweek(arg) + 6) % 7,
+            ifs=list(itertools.starmap(self.if_, enumerate(calendar.day_name))),
+        )
+    
+    def visit_DayOfWeekName(self, op, *, arg):
+        # day of week number is 0-indexed
+        # Sunday == 0
+        # Saturday == 6
+        return sge.Case(
+            this=self.f.dayofweek(arg),
             ifs=list(itertools.starmap(self.if_, enumerate(calendar.day_name))),
         )
 
