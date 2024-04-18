@@ -122,6 +122,10 @@ class ExtractMonth(ExtractDateField):
 class ExtractDay(ExtractDateField):
     pass
 
+@public
+class ExtractDayOfWeek(ExtractDateField):
+    pass
+
 
 @public
 class ExtractDayOfYear(ExtractDateField):

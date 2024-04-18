@@ -45,6 +45,10 @@ class _DateComponentMixin:
         """Extract the day component."""
         return ops.ExtractDay(self).to_expr()
 
+    def isoday_of_week(self) -> ir.IntegerValue:
+        """Extract the day of the week component in ISO-Format (1=Monday, 7=Sunday)."""
+        return ops.ExtractDayOfWeek(self).to_expr()
+    
     @property
     def day_of_week(self) -> DayOfWeek:
         """A namespace of methods for extracting day of week information.

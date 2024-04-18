@@ -816,6 +816,9 @@ class SQLGlotCompiler(abc.ABC):
     def visit_ExtractDay(self, op, *, arg):
         return self.f.extract(self.v.day, arg)
 
+    def visit_ExtractDayOfWeek(self, op, *, arg):
+        return self.f.extract(self.v.dayofweek, arg)
+
     def visit_ExtractDayOfYear(self, op, *, arg):
         return self.f.extract(self.v.dayofyear, arg)
 
