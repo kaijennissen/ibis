@@ -58,14 +58,16 @@ class _DateComponentMixin:
         Examples
         --------
         >>> import ibis
-        >>> import datetime as dt 
+        >>> import datetime as dt
         >>> ibis.options.interactive = True
-        >>> t = ibis.memtable({"date" : [dt.datetime(2024,4,x) for x in [14,15,16,17,18,19,20]]}, name="t")
+        >>> t = ibis.memtable(
+        ...     {"date": [dt.datetime(2024, 4, x) for x in [14, 15, 16, 17, 18, 19, 20]]}, name="t"
+        ... )
         >>> t.mutate(
-        ...    day_of_week=_.date.day_of_week.index(),
-        ...    day_of_week_name=_.date.day_of_week.full_name(),
-        ...    iso_day_of_week=_.date.day_of_week.iso_index()
-        ...    )
+        ...     day_of_week=_.date.day_of_week.index(),
+        ...     day_of_week_name=_.date.day_of_week.full_name(),
+        ...     iso_day_of_week=_.date.day_of_week.iso_index(),
+        ... )
         ┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
         ┃ date                ┃ day_of_week ┃ day_of_week_name ┃ iso_day_of_week ┃
         ┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
@@ -1014,7 +1016,6 @@ class DayOfWeek:
         """
         return ops.DayOfWeekName(self._expr).to_expr()
 
-
     def iso_index(self):
         """Get the index of the day of the week in iso-format (1=Monday, 7=Sunday).
 
@@ -1024,4 +1025,3 @@ class DayOfWeek:
             The index of the day of the week in iso-format (1=Monday, 7=Sunday).
         """
         return ops.IsoDayOfWeekIndex(self._expr).to_expr()
-    

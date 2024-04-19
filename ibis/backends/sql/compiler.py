@@ -862,8 +862,7 @@ class SQLGlotCompiler(abc.ABC):
         return (self.f.dayofweek(arg) + 6) % 7
 
     def visit_IsoDayOfWeekIndex(self, op, *, arg):
-        return  (self.f.dayofweek(arg) + 6) % 7+1
-     
+        return (self.f.dayofweek(arg) + 6) % 7 + 1
 
     def visit_DayOfWeekName(self, op, *, arg):
         # day of week number is 0-indexed
@@ -873,7 +872,7 @@ class SQLGlotCompiler(abc.ABC):
             this=(self.f.dayofweek(arg) + 6) % 7,
             ifs=list(itertools.starmap(self.if_, enumerate(calendar.day_name))),
         )
-    
+
     def visit_IntervalFromInteger(self, op, *, arg, unit):
         return sge.Interval(
             this=sge.convert(arg), unit=sge.Var(this=unit.singular.upper())

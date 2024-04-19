@@ -122,6 +122,7 @@ class ExtractMonth(ExtractDateField):
 class ExtractDay(ExtractDateField):
     pass
 
+
 @public
 class ExtractDayOfWeek(ExtractDateField):
     pass
@@ -178,6 +179,7 @@ class DayOfWeekIndex(Unary):
 
     dtype = dt.int16
 
+
 @public
 class IsoDayOfWeekIndex(Unary):
     arg: Value[dt.Date | dt.Timestamp]
@@ -190,6 +192,8 @@ class DayOfWeekName(Unary):
     arg: Value[dt.Date | dt.Timestamp]
 
     dtype = dt.string
+
+
 @public
 class IsoDayOfWeekName(Unary):
     arg: Value[dt.Date | dt.Timestamp]
