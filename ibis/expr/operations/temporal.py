@@ -178,9 +178,20 @@ class DayOfWeekIndex(Unary):
 
     dtype = dt.int16
 
+@public
+class IsoDayOfWeekIndex(Unary):
+    arg: Value[dt.Date | dt.Timestamp]
+
+    dtype = dt.int16
+
 
 @public
 class DayOfWeekName(Unary):
+    arg: Value[dt.Date | dt.Timestamp]
+
+    dtype = dt.string
+@public
+class IsoDayOfWeekName(Unary):
     arg: Value[dt.Date | dt.Timestamp]
 
     dtype = dt.string
