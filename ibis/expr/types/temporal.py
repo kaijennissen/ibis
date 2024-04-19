@@ -59,6 +59,7 @@ class _DateComponentMixin:
         --------
         >>> import ibis
         >>> import datetime as dt
+        >>> from ibis import _
         >>> ibis.options.interactive = True
         >>> t = ibis.memtable(
         ...     {"date": [dt.datetime(2024, 4, x) for x in [14, 15, 16, 17, 18, 19, 20]]}, name="t"
