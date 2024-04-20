@@ -440,9 +440,9 @@ class FlinkCompiler(SQLGlotCompiler):
 
     def visit_DayOfWeekIndex(self, op, *, arg):
         return (self.f.dayofweek(arg) + 5) % 7
-    
+
     def visit_IsoDayOfWeekIndex(self, op, *, arg):
-        return ((self.f.dayofweek(arg) + 5) % 7)+1
+        return ((self.f.dayofweek(arg) + 5) % 7) + 1
 
     def visit_DayOfWeekName(self, op, *, arg):
         index = self.cast(self.f.dayofweek(self.cast(arg, dt.date)), op.dtype)

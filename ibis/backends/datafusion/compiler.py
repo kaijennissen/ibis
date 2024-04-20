@@ -241,9 +241,9 @@ class DataFusionCompiler(SQLGlotCompiler):
 
     def visit_DayOfWeekIndex(self, op, *, arg):
         return (self.f.date_part("dow", arg) + 6) % 7
-    
+
     def visit_IsoDayOfWeekIndex(self, op, *, arg):
-        return ((self.f.date_part("dow", arg) + 6) % 7)+1
+        return ((self.f.date_part("dow", arg) + 6) % 7) + 1
 
     def visit_DayOfWeekName(self, op, *, arg):
         return sg.exp.Case(
