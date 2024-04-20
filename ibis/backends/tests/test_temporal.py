@@ -1573,7 +1573,7 @@ def test_string_to_date(alltypes, fmt):
     ],
 )
 @pytest.mark.notimpl(["druid", "oracle"], raises=com.OperationNotDefinedError)
-@pytest.mark.notimpl(["exasol"], raises=com.OperationNotDefinedError)
+# @pytest.mark.notimpl(["exasol"], raises=com.OperationNotDefinedError)
 @pytest.mark.broken(
     ["risingwave"],
     raises=AssertionError,
