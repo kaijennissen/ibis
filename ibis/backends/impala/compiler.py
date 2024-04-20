@@ -140,7 +140,7 @@ class ImpalaCompiler(SQLGlotCompiler):
         return self.f.pmod(self.f.dayofweek(arg) - 2, 7)
 
     def visit_IsoDayOfWeekIndex(self, op, *, arg):
-        return self.f.pmod(self.f.dayofweek(arg) - 1, 7)
+        return self.f.pmod(self.f.dayofweek(arg) - 2, 7) + 1
 
     def visit_ExtractMillisecond(self, op, *, arg):
         return self.f.extract(self.v.millisecond, arg) % 1_000
