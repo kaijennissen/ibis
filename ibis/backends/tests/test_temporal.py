@@ -1599,7 +1599,7 @@ def test_day_of_week_scalar(
     raises=AttributeError,
     reason="StringColumn' object has no attribute 'day_of_week'",
 )
-@pytest.mark.notimpl(["exasol"], raises=com.OperationNotDefinedError)
+# @pytest.mark.notimpl(["exasol"], raises=com.OperationNotDefinedError)
 @pytest.mark.broken(
     ["risingwave"],
     raises=AssertionError,
@@ -1631,9 +1631,9 @@ def test_day_of_week_column(backend, alltypes, df):
             lambda t: t.timestamp_col.day_of_week.index().count(),
             lambda s: s.dt.dayofweek.count(),
             id="day_of_week_index",
-            marks=[
-                pytest.mark.notimpl(["exasol"], raises=com.OperationNotDefinedError)
-            ],
+            # marks=[
+            #     pytest.mark.notimpl(["exasol"], raises=com.OperationNotDefinedError)
+            # ],
         ),
         param(
             lambda t: t.timestamp_col.day_of_week.full_name().length().sum(),
